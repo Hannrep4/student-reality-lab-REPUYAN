@@ -2,19 +2,38 @@
 For IS219 Midterm Project: "Student Reality Lab: Data Story Prototype + STAR Demo"
 
 ### Title
-Rent Burden: The Infamous Student Dilemma
+
+Student Reality Lab: Rent Burden in 2026
 
 ### Essential Question
-Can students afford to move out after college graduation?
 
-### Claim (Hypothesis)
-Students are unable to move out after graduating college due to financial and occupational difficulties.
+Are college-aged workers able to afford rent in 2026 without becoming rent-burdened?
+
+### Claim
+
+Most college-aged workers would be rent-burdened at current wage and rent levels.
 
 ### Audience
-Students and Parents/Guardians
+
+College students considering moving out.
 
 ### STAR Draft
-(S)ituation -> This is important to students because of significant economical changes in society. Finding an affordable place to live has gotten increasingly harder over the years, and this can impact college graduates. 
-(T)ask -> The viewer should understand the potential obstacles they may encounter while locating spaces to rent, as well as understand how to locate affordable spaces.
-(A)ction ->
-(R)esult ->
+S — Situation
+
+Rent prices have increased faster than wages for young workers.
+
+T — Task
+
+Determine whether a typical student income can support market rent.
+
+A — Action
+
+Built two interactive views:
+
+Income vs Rent comparison with wage slider
+
+Personal affordability calculator
+
+R — Result
+
+Preliminary data suggests students earning under $20/hour part-time exceed the 30% rent threshold.
