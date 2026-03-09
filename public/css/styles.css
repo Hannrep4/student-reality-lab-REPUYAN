@@ -1,0 +1,550 @@
+/* ========================
+   Global Styles
+   ======================== */
+:root {
+  /* grade-school palette */
+  /* softer, less-saturated palette */
+  --primary-color: #ffd24d;  /* darker, easier-to-read yellow */
+  --secondary-color: #80aaff; /* muted blue */
+  --accent-color: #ff7f7f; /* light coral */
+  --success-color: #27ae60;
+  --warning-color: #f39c12;
+  --danger-color: #e74c3c;
+  --light-bg: #fff9e6; /* paper cream */
+  --dark-text: #333333;
+  --border-radius: 4px;
+  --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: var(--dark-text);
+  line-height: 1.6;
+  background-color: var(--light-bg);
+  background-image: url('../images/paper-texture.png');
+  background-size: cover;
+}
+
+/* add subtle notebook grid */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(#e8e8e8 1px, transparent 1px) 0 0,
+              linear-gradient(90deg, #e8e8e8 1px, transparent 1px) 0 0;
+  background-size: 20px 20px;
+  pointer-events: none;
+  z-index: -1;
+} 
+
+/* ========================
+   Navigation Bar
+   ======================== */
+.navbar {
+  background: linear-gradient(90deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  color: white;
+  padding: 1rem 0;
+  box-shadow: var(--box-shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.navbar::before,
+.navbar::after {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  transform: rotate(45deg);
+}
+
+.navbar::before {
+  top: -40px;
+  left: -40px;
+}
+
+.navbar::after {
+  bottom: -40px;
+  right: -40px;
+} 
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+.nav-logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  position: relative;
+  cursor: default;
+  animation: logo-bounce 3s ease-in-out infinite;
+  padding: 0 0.3rem;
+}
+
+@keyframes logo-bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid transparent;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--secondary-color);
+  border-bottom-color: var(--secondary-color);
+  border-bottom-style: dashed;
+}
+
+/* ========================
+   Hero Section
+   ======================== */
+.hero {
+  position: relative;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: var(--dark-text);
+  padding: 6rem 2rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  overflow: hidden;
+}
+
+/* geometric shapes in hero */
+.hero::before, .hero::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.3;
+}
+.hero::before {
+  width: 300px;
+  height: 300px;
+  background: var(--accent-color);
+  top: -100px;
+  left: -100px;
+}
+.hero::after {
+  width: 200px;
+  height: 200px;
+  background: var(--warning-color);
+  bottom: -80px;
+  right: -80px;
+} 
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.cta-button {
+  display: inline-block;
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.cta-button:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
+
+/* ========================
+   Features Section
+   ======================== */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 0 2rem;
+  position: relative;
+}
+.features::before {
+  content: '';
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: var(--accent-color);
+  opacity: 0.15;
+  top: -30px;
+  right: -30px;
+  transform: rotate(45deg);
+}
+.features::after {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: var(--secondary-color);
+  opacity: 0.15;
+  bottom: -20px;
+  left: -20px;
+  transform: rotate(30deg);
+} 
+
+.feature-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f7f9fc 100%);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  text-align: center;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  background: linear-gradient(135deg, #f0f4ff 0%, #e8f5ff 100%);
+}
+
+.feature-card h3 {
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.feature-card p {
+  color: #555;
+}
+
+/* ========================
+   Info Section
+   ======================== */
+.info-section {
+  max-width: 1000px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.info-section h2 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.info-section p {
+  margin-bottom: 1rem;
+  line-height: 1.8;
+  color: #555;
+}
+
+/* ========================
+   Popular Cities Section
+   ======================== */
+.popular-cities {
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 0 2rem;
+}
+
+.popular-cities h2 {
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.cities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.city-item {
+  background: white;
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  text-align: center;
+  box-shadow: var(--box-shadow);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.city-item:hover {
+  background-color: var(--light-bg);
+  transform: scale(1.02);
+}
+/* ========================
+   Calculator Page
+   ======================== */
+.calculator-page {
+  min-height: calc(100vh - 200px);
+  padding: 3rem 2rem;
+}
+
+.calculator-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  position: relative;
+}
+.calculator-container::before {
+  content: '';
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: var(--secondary-color);
+  opacity: 0.1;
+  top: -40px;
+  left: -40px;
+  border-radius: 50% 20% 50% 20%;
+}
+.calculator-container::after {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: var(--accent-color);
+  opacity: 0.1;
+  bottom: -30px;
+  right: -30px;
+  border-radius: 20% 50% 20% 50%;
+}
+
+.calculator-container h1 {
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.calculator-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+
+.form-group input,
+.form-group select {
+  padding: 0.8rem;
+  border: 2px solid #ddd;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+}
+
+.calculate-btn {
+  padding: 1rem;
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.calculate-btn:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
+
+.calculate-btn:active {
+  transform: translateY(0);
+}
+
+/* ========================
+   Results Section
+   ======================== */
+.results-section {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  background-color: var(--light-bg);
+}
+
+.result-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 1rem;
+  border-left: 5px solid var(--secondary-color);
+}
+
+.result-card.success {
+  border-left-color: var(--success-color);
+}
+
+.result-card.warning {
+  border-left-color: var(--warning-color);
+}
+
+.result-card.danger {
+  border-left-color: var(--danger-color);
+}
+
+.result-label {
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.result-value {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--secondary-color);
+}
+
+.result-card.success .result-value {
+  color: var(--success-color);
+}
+
+.result-card.danger .result-value {
+  color: var(--danger-color);
+}
+
+.result-message {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: var(--border-radius);
+  color: #555;
+}
+
+.error-message {
+  background-color: #ffebee;
+  color: var(--danger-color);
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 1rem;
+  border-left: 4px solid var(--danger-color);
+}
+
+/* ========================
+   Footer
+   ======================== */
+footer {
+  background-color: var(--primary-color);
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  margin-top: 3rem;
+}
+
+footer p {
+  margin-bottom: 0.5rem;
+}
+
+footer p:last-child {
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+/* ========================
+   Responsive Design
+   ======================== */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .nav-menu {
+    gap: 1rem;
+  }
+
+  .calculator-container {
+    padding: 1.5rem;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  .cities-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .result-value {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-container {
+    padding: 0 1rem;
+  }
+
+  .hero-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .cities-grid {
+    grid-template-columns: 1fr;
+  }
+}

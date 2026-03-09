@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rent Calculator - NJ Affordability</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">🏠 NJ Rent Calculator</div>
+      <ul class="nav-menu">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/calculator" class="nav-link active">Calculator</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="calculator-page">
+    <section class="calculator-container">
+      <h1>Rent Affordability Calculator</h1>
+      <p class="subtitle">Enter your monthly income and select a city to see if you can afford rent</p>
+
+      <div class="calculator-form">
+        <div class="form-group">
+          <label for="monthlyIncome">Monthly Gross Income ($)</label>
+          <input 
+            type="number" 
+            id="monthlyIncome" 
+            placeholder="Enter your monthly income" 
+            min="0"
+            step="100"
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="city">Select City</label>
+          <select id="city">
+            <option value="">-- Choose a City --</option>
+            <option value="newark">Newark</option>
+            <option value="jersey-city">Jersey City</option>
+            <option value="paramus">Paramus</option>
+            <option value="elizabeth">Elizabeth</option>
+            <option value="hoboken">Hoboken</option>
+            <option value="trenton">Trenton</option>
+            <option value="atlantic-city">Atlantic City</option>
+            <option value="new-brunswick">New Brunswick</option>
+          </select>
+        </div>
+
+        <button class="calculate-btn" onclick="calculateAffordability()">Calculate</button>
+      </div>
+
+      <div id="results" class="results-section" style="display: none;">
+        <div id="resultContent"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 NJ Rent Affordability Calculator. For College Graduates.</p>
+    <p>Disclaimer: This calculator provides estimates based on average rent data. For accurate information, please consult local real estate sources.</p>
+  </footer>
+
+  <script src="js/calculator.js"></script>
+</body>
+</html>
