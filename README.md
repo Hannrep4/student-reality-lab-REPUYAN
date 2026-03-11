@@ -199,7 +199,8 @@ IS219-midterm-project/
 
 ## Author
 
-Created for IS219 Midterm Project
+Hannah Repuyan
+Created with the assistance of VSCode Chat feature for IS219 Midterm Project.
 
 ## License
 
