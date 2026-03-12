@@ -1,19 +1,21 @@
 /* ========================
-   Global Styles
+   Global Styles  —  Y2K Candy Edition
    ======================== */
 :root {
-  /* grade-school palette */
-  /* softer, less-saturated palette */
-  --primary-color: #ffd24d;  /* darker, easier-to-read yellow */
-  --secondary-color: #80aaff; /* muted blue */
-  --accent-color: #ff7f7f; /* light coral */
-  --success-color: #27ae60;
-  --warning-color: #f39c12;
-  --danger-color: #e74c3c;
-  --light-bg: #fff9e6; /* paper cream */
-  --dark-text: #333333;
-  --border-radius: 4px;
-  --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* Y2K candy palette */
+  --primary-color:   #ff6ec7;   /* hot pink */
+  --secondary-color: #00e5ff;   /* electric cyan */
+  --accent-color:    #aaff00;   /* lime green */
+  --candy-purple:    #bf5fff;   /* bubblegum purple */
+  --candy-orange:    #ff9900;   /* tangerine */
+  --success-color:   #00e676;   /* neon green */
+  --warning-color:   #ffea00;   /* electric yellow */
+  --danger-color:    #ff1744;   /* neon red */
+  --light-bg:        #ffe6f7;   /* candy pink background */
+  --dark-text:       #000000;
+  --border-radius:   8px;
+  --box-shadow:      3px 3px 0 #000, 6px 6px 0 rgba(0,0,0,0.15);
+  --font-heading:    'Arial Black', 'Impact', sans-serif;
 }
 
 
@@ -23,18 +25,16 @@
   box-sizing: border-box;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&family=Open+Sans:wght@400;600&display=swap');
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Nunito', 'Open Sans', sans-serif;
   color: var(--dark-text);
   line-height: 1.6;
   background-color: var(--light-bg);
-  background-image: url('../images/paper-texture.png');
-  background-size: cover;
 }
 
-/* add subtle notebook grid */
+/* Y2K candy grid — kept, just recolored */
 body::before {
   content: '';
   position: fixed;
@@ -42,9 +42,9 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(#e8e8e8 1px, transparent 1px) 0 0,
-              linear-gradient(90deg, #e8e8e8 1px, transparent 1px) 0 0;
-  background-size: 20px 20px;
+  background: linear-gradient(rgba(255,110,199,0.18) 1px, transparent 1px) 0 0,
+              linear-gradient(90deg, rgba(0,229,255,0.18) 1px, transparent 1px) 0 0;
+  background-size: 24px 24px;
   pointer-events: none;
   z-index: -1;
 } 
@@ -53,10 +53,11 @@ body::before {
    Navigation Bar
    ======================== */
 .navbar {
-  background: linear-gradient(90deg, var(--primary-color) 0%, var(--accent-color) 100%);
-  color: white;
+  background: linear-gradient(90deg, var(--primary-color) 0%, var(--candy-purple) 50%, var(--secondary-color) 100%);
+  color: #000;
   padding: 1rem 0;
-  box-shadow: var(--box-shadow);
+  border-bottom: 3px solid #000;
+  box-shadow: 0 4px 0 #000;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -125,8 +126,12 @@ body::before {
 }
 
 .nav-logo {
+  font-family: var(--font-heading);
   font-size: 1.8rem;
-  font-weight: bold;
+  font-weight: 900;
+  color: #000;
+  text-shadow: 2px 2px 0 var(--accent-color), 4px 4px 0 var(--primary-color);
+  letter-spacing: -0.5px;
   position: relative;
   cursor: default;
   animation: logo-bounce 3s ease-in-out infinite;
@@ -144,18 +149,20 @@ body::before {
 }
 
 .nav-link {
-  color: white;
+  color: #000;
+  font-weight: 700;
   text-decoration: none;
-  transition: color 0.3s ease;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, background 0.2s ease;
+  padding: 0.3rem 0.7rem;
+  border: 2px solid transparent;
+  border-radius: 6px;
 }
 
 .nav-link:hover,
 .nav-link.active {
-  color: var(--secondary-color);
-  border-bottom-color: var(--secondary-color);
-  border-bottom-style: dashed;
+  color: #000;
+  background: var(--accent-color);
+  border-color: #000;
 }
 
 /* ========================
@@ -163,12 +170,13 @@ body::before {
    ======================== */
 .hero {
   position: relative;
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-  color: white;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--candy-purple) 40%, var(--secondary-color) 100%);
+  color: #000;
   padding: 6rem 2rem;
   text-align: center;
   margin-bottom: 3rem;
   overflow: hidden;
+  border-bottom: 4px solid #000;
 }
 
 /* geometric shapes in hero */
@@ -196,31 +204,42 @@ body::before {
 } 
 
 .hero-content h1 {
+  font-family: var(--font-heading);
   font-size: 3rem;
+  font-weight: 900;
+  color: #000;
+  text-shadow: 3px 3px 0 var(--accent-color), 6px 6px 0 var(--candy-orange);
   margin-bottom: 1rem;
+  letter-spacing: -1px;
 }
 
 .hero-content p {
   font-size: 1.2rem;
+  font-weight: 700;
+  color: #000;
   margin-bottom: 2rem;
 }
 
 .cta-button {
   display: inline-block;
-  background-color: var(--secondary-color);
-  color: white;
-  padding: 1rem 2rem;
+  background-color: var(--accent-color);
+  color: #000;
+  font-family: var(--font-heading);
+  font-weight: 900;
+  letter-spacing: 1px;
+  padding: 1rem 2.5rem;
   text-decoration: none;
-  border-radius: var(--border-radius);
+  border-radius: 50px;
+  border: 3px solid #000;
+  box-shadow: 4px 4px 0 #000;
   font-size: 1.1rem;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  border: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
   cursor: pointer;
 }
 
 .cta-button:hover {
-  background-color: #2980b9;
-  transform: translateY(-2px);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 #000;
 }
 
 /* ========================
@@ -274,27 +293,35 @@ body::before {
 }
 
 .feature-card {
-  background: linear-gradient(135deg, #ffffff 0%, #f7f9fc 100%);
+  background: #fff;
   padding: 2rem;
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
+  border-radius: 12px;
+  border: 3px solid #000;
+  box-shadow: 5px 5px 0 #000;
   text-align: center;
-  transition: transform 0.3s ease, background 0.3s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
+.feature-card:nth-child(1) { background: #ffecf9; }
+.feature-card:nth-child(2) { background: #e6fffe; }
+.feature-card:nth-child(3) { background: #f3ffcc; }
+
 .feature-card:hover {
-  transform: translateY(-5px);
-  background: linear-gradient(135deg, #f0f4ff 0%, #e8f5ff 100%);
+  transform: translate(-3px, -3px);
+  box-shadow: 8px 8px 0 #000;
 }
 
 .feature-card h3 {
-  color: var(--secondary-color);
+  font-family: var(--font-heading);
+  font-weight: 900;
+  color: #000;
   margin-bottom: 1rem;
   font-size: 1.3rem;
 }
 
 .feature-card p {
-  color: #555;
+  color: #222;
+  font-weight: 600;
 }
 
 /* ========================
@@ -304,20 +331,32 @@ body::before {
   max-width: 1000px;
   margin: 3rem auto;
   padding: 2rem;
-  background: white;
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
+  background: #fff9fe;
+  border: 3px solid #000;
+  border-radius: 12px;
+  box-shadow: 6px 6px 0 #000;
 }
 
 .info-section h2 {
-  color: var(--primary-color);
+  font-family: var(--font-heading);
+  font-weight: 900;
+  color: #000;
+  text-shadow: 2px 2px 0 var(--primary-color);
   margin-bottom: 1rem;
 }
 
 .info-section p {
   margin-bottom: 1rem;
   line-height: 1.8;
-  color: #555;
+  color: #111;
+  font-weight: 600;
+}
+
+.info-section strong {
+  color: var(--primary-color);
+  background: #000;
+  padding: 1px 6px;
+  border-radius: 4px;
 }
 
 /* ========================
@@ -330,7 +369,10 @@ body::before {
 }
 
 .popular-cities h2 {
-  color: var(--primary-color);
+  font-family: var(--font-heading);
+  font-weight: 900;
+  color: #000;
+  text-shadow: 2px 2px 0 var(--secondary-color);
   margin-bottom: 2rem;
   text-align: center;
 }
@@ -344,15 +386,20 @@ body::before {
 .city-item {
   background: white;
   padding: 1.5rem;
-  border-radius: var(--border-radius);
+  border-radius: 10px;
+  border: 2px solid #000;
+  box-shadow: 4px 4px 0 #000;
   text-align: center;
-  box-shadow: var(--box-shadow);
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-weight: 700;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
+.city-item:nth-child(odd)  { background: #ffe6f7; }
+.city-item:nth-child(even) { background: #e6fffe; }
+
 .city-item:hover {
-  background-color: var(--light-bg);
-  transform: scale(1.02);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 #000;
 }
 /* ========================
    Calculator Page
@@ -395,7 +442,10 @@ body::before {
 }
 
 .calculator-container h1 {
-  color: var(--primary-color);
+  font-family: var(--font-heading);
+  font-weight: 900;
+  color: #000;
+  text-shadow: 2px 2px 0 var(--primary-color);
   margin-bottom: 0.5rem;
   text-align: center;
 }
@@ -418,45 +468,53 @@ body::before {
 }
 
 .form-group label {
-  font-weight: bold;
+  font-weight: 900;
+  font-family: var(--font-heading);
   margin-bottom: 0.5rem;
-  color: var(--primary-color);
+  color: #000;
 }
 
 .form-group input,
 .form-group select {
   padding: 0.8rem;
-  border: 2px solid #ddd;
+  border: 2px solid #000;
   border-radius: var(--border-radius);
   font-size: 1rem;
-  transition: border-color 0.3s ease;
+  font-weight: 600;
+  background: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-group input:focus,
 .form-group select:focus {
   outline: none;
-  border-color: var(--secondary-color);
+  border-color: var(--primary-color);
+  box-shadow: 3px 3px 0 var(--primary-color);
 }
 
 .calculate-btn {
   padding: 1rem;
-  background-color: var(--secondary-color);
-  color: white;
-  border: none;
-  border-radius: var(--border-radius);
+  background: var(--secondary-color);
+  color: #000;
+  border: 3px solid #000;
+  border-radius: 50px;
+  box-shadow: 4px 4px 0 #000;
+  font-family: var(--font-heading);
   font-size: 1.1rem;
-  font-weight: bold;
+  font-weight: 900;
+  letter-spacing: 1px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .calculate-btn:hover {
-  background-color: #2980b9;
-  transform: translateY(-2px);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 #000;
 }
 
 .calculate-btn:active {
-  transform: translateY(0);
+  transform: translate(0, 0);
+  box-shadow: 2px 2px 0 #000;
 }
 
 /* ========================
@@ -490,23 +548,30 @@ body::before {
 }
 
 .result-label {
-  font-weight: bold;
-  color: var(--primary-color);
+  font-family: var(--font-heading);
+  font-weight: 900;
+  color: #000;
   margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
 }
 
 .result-value {
+  font-family: var(--font-heading);
   font-size: 1.8rem;
-  font-weight: bold;
-  color: var(--secondary-color);
+  font-weight: 900;
+  color: var(--candy-purple);
 }
 
 .result-card.success .result-value {
-  color: var(--success-color);
+  color: #000;
+  text-shadow: 2px 2px 0 var(--success-color);
 }
 
 .result-card.danger .result-value {
-  color: var(--danger-color);
+  color: #000;
+  text-shadow: 2px 2px 0 var(--danger-color);
 }
 
 .result-message {
@@ -527,14 +592,25 @@ body::before {
 }
 
 /* ========================
+   Y2K Keyword Highlight
+   ======================== */
+.kw-pink   { background: #ff6ec7; color: #000; font-weight: 900; padding: 1px 6px; border-radius: 4px; border: 1.5px solid #000; }
+.kw-cyan   { background: #00e5ff; color: #000; font-weight: 900; padding: 1px 6px; border-radius: 4px; border: 1.5px solid #000; }
+.kw-lime   { background: #aaff00; color: #000; font-weight: 900; padding: 1px 6px; border-radius: 4px; border: 1.5px solid #000; }
+.kw-orange { background: #ff9900; color: #000; font-weight: 900; padding: 1px 6px; border-radius: 4px; border: 1.5px solid #000; }
+.kw-purple { background: #bf5fff; color: #000; font-weight: 900; padding: 1px 6px; border-radius: 4px; border: 1.5px solid #000; }
+
+/* ========================
    Footer
    ======================== */
 footer {
-  background-color: var(--primary-color);
-  color: white;
+  background: linear-gradient(90deg, var(--primary-color), var(--candy-purple), var(--secondary-color));
+  color: #000;
+  font-weight: 700;
   text-align: center;
   padding: 2rem;
   margin-top: 3rem;
+  border-top: 4px solid #000;
 }
 
 footer p {
@@ -543,7 +619,7 @@ footer p {
 
 footer p:last-child {
   font-size: 0.9rem;
-  color: #bbb;
+  color: #333;
 }
 
 /* ========================
