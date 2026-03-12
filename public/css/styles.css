@@ -23,8 +23,6 @@
   box-sizing: border-box;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;600;700&display=swap');
-
 body {
   font-family: 'Albert Sans', sans-serif;
   color: var(--dark-text);
