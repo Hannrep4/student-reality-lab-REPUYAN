@@ -17,6 +17,10 @@ app.get('/calculator', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'calculator.html'));
 });
 
+app.get('/chatbot', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'chatbot.html'));
+});
+
 // Start server
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);

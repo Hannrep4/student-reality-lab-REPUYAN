@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rent Affordability Chatbot - NJ Calculator</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/chatbot.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">🏠 NJ Rent Calculator</div>
+      <ul class="nav-menu">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/calculator" class="nav-link">Calculator</a></li>
+        <li><a href="/chatbot" class="nav-link active">Chatbot</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="chatbot-container">
+    <div class="chatbot-header">
+      <h1>🤖 Rent Affordability Assistant</h1>
+      <p>Chat with our AI assistant to understand your rent affordability in New Jersey cities</p>
+    </div>
+
+    <div class="chatbot-wrapper">
+      <div class="messages-container" id="messagesContainer">
+        <div class="message bot-message">
+          <div class="message-content">
+            <p>Hello! 👋 I'm your rent affordability assistant. I'm here to help you understand whether you can afford rent in different New Jersey cities using the 30% affordability rule.</p>
+            <p>Here's what I can help with:</p>
+            <ul>
+              <li>Check if you can afford rent in a specific NJ city</li>
+              <li>Calculate how much income you need to afford rent</li>
+              <li>Explain the 30% affordability rule</li>
+              <li>Discuss rent-burden situations (when rent exceeds 40% of income)</li>
+              <li>Provide suggestions for affordable NJ cities</li>
+            </ul>
+            <p>Try asking me something like: "Can I afford $1,800/month rent in Jersey City with a $4,500/month income?"</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="input-area">
+        <form id="chatForm" onsubmit="sendMessage(event)">
+          <input 
+            type="text" 
+            id="messageInput" 
+            placeholder="Ask about rent affordability in NJ cities..." 
+            autocomplete="off"
+            required
+          />
+          <button type="submit" id="sendButton" class="send-button">
+            <span>Send</span>
+            <span class="send-icon">➤</span>
+          </button>
+        </form>
+        <div id="loadingIndicator" class="loading-indicator" style="display: none;">
+          <span class="spinner"></span>
+          <span>Thinking...</span>
+        </div>
+        <div id="errorMessage" class="error-message" style="display: none;"></div>
+      </div>
+    </div>
+
+    <div class="chatbot-info">
+      <h3>About This Calculator</h3>
+      <p>
+        This chatbot assistant helps college graduates in New Jersey understand rent affordability. 
+        It uses the <strong>30% rule</strong>: your monthly rent should not exceed 30% of your gross monthly income. 
+        If it does, you may face financial strain. When rent exceeds 40%, you're considered rent-burdened.
+      </p>
+      <p>
+        <strong>Covered NJ Cities:</strong> Newark, Jersey City, Paramus, Elizabeth, Hoboken, Trenton, Atlantic City, New Brunswick
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 NJ Rent Affordability Calculator. For College Graduates.</p>
+    <p>Disclaimer: This calculator provides estimates based on average rent data. For accurate information, please consult local real estate sources.</p>
+  </footer>
+
+  <script src="js/chatbot.js"></script>
+</body>
+</html>

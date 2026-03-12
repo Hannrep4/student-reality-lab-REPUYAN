@@ -126,6 +126,29 @@ We will build an interactive rent affordability calculator with two views:
 
 3. Explore the landing page or click "Try the Calculator" to begin
 
+### Chatbot Feature (NEW!)
+
+The project now includes an **AI-powered chatbot** for rent affordability discussions!
+
+To use the chatbot, you need to:
+
+1. Set up a separate **Python Flask backend** (see [CHATBOT_SETUP.md](CHATBOT_SETUP.md))
+2. The chatbot uses OpenAI API, so you'll need an API key
+3. Run both the Express server (port 3001) and Flask server (port 5000)
+
+**Quick Start**:
+```bash
+# Terminal 1: Start Express server
+npm start
+
+# Terminal 2: Start Flask server
+python chatbot_backend.py
+```
+
+Then navigate to http://localhost:3001/chatbot
+
+**For complete setup instructions**, see [CHATBOT_SETUP.md](CHATBOT_SETUP.md)
+
 ### Affordability Formula
 
 The calculator uses the **30% Rule**—a standard financial guideline:
@@ -158,6 +181,20 @@ IS219-midterm-project/
 ├── server.js                # Express.js server (port 3001)
 ├── package.json             # npm dependencies
 └── README.md                # This file
+
+**Chatbot Files**:
+```
+├── chatbot_backend.py        # Flask server with OpenAI integration (port 5000)
+├── .env                      # OpenAI API key configuration (not in git)
+├── requirements.txt          # Python dependencies
+├── CHATBOT_SETUP.md         # Detailed chatbot setup instructions
+├── public/
+│   ├── chatbot.html          # Chatbot UI page
+│   ├── css/
+│   │   └── chatbot.css       # Chatbot-specific styles
+│   └── js/
+│       └── chatbot.js        # Chatbot frontend logic
+```
 ```
 
 ---
