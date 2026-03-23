@@ -1,8 +1,13 @@
-const express = require('express');
-const path = require('path');
-
-const app = express();
-const PORT = process.env.PORT || 3001;
+const RENT_DATA = {
+  newark: { name: 'Newark', averageRent: 1400 },
+  'jersey-city': { name: 'Jersey City', averageRent: 1800 },
+  paramus: { name: 'Paramus', averageRent: 1650 },
+  elizabeth: { name: 'Elizabeth', averageRent: 1350 },
+  hoboken: { name: 'Hoboken', averageRent: 2100 },
+  trenton: { name: 'Trenton', averageRent: 1200 },
+  'atlantic-city': { name: 'Atlantic City', averageRent: 1300 },
+  'new-brunswick': { name: 'New Brunswick', averageRent: 1400 }
+};
 
 const SYSTEM_PROMPT = `You are a helpful rent affordability assistant for college graduates in New Jersey.
 You help users understand whether they can afford rent in different NJ cities using the 30% affordability rule.
@@ -63,26 +68,14 @@ async function getChatCompletion(userMessage) {
   return payload?.choices?.[0]?.message?.content || 'I could not generate a response right now.';
 }
 
-// Middleware
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.json());
+module.exports = async (req, res) => {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed', success: false });
+  }
 
-// Routes
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
-
-app.get('/calculator', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'calculator.html'));
-});
-
-app.get('/chatbot', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'chatbot.html'));
-});
-
-app.post('/api/chat', async (req, res) => {
   try {
-    const userMessage = (req.body?.message || '').trim();
+    const body = typeof req.body === 'string' ? JSON.parse(req.body || '{}') : (req.body || {});
+    const userMessage = (body.message || '').trim();
 
     if (!userMessage) {
       return res.status(400).json({ error: 'Message cannot be empty', success: false });
@@ -90,16 +83,15 @@ app.post('/api/chat', async (req, res) => {
 
     const response = await getChatCompletion(userMessage);
 
-    return res.status(200).json({ response, success: true });
+    return res.status(200).json({
+      response,
+      success: true,
+      rentData: RENT_DATA
+    });
   } catch (error) {
     return res.status(500).json({
       error: error.message || 'Unexpected server error',
       success: false
     });
   }
-});
-
-// Start server
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
-});
+};

@@ -132,17 +132,14 @@ The project now includes an **AI-powered chatbot** for rent affordability discus
 
 To use the chatbot, you need to:
 
-1. Set up a separate **Python Flask backend** (see [CHATBOT_SETUP.md](CHATBOT_SETUP.md))
-2. The chatbot uses OpenAI API, so you'll need an API key
-3. Run both the Express server (port 3001) and Flask server (port 5000)
+1. Set your **OPENAI_API_KEY** in environment variables
+2. Run the Node server locally (or deploy to Vercel)
+3. Use the chatbot page, which now calls `/api/chat`
 
 **Quick Start**:
 ```bash
-# Terminal 1: Start Express server
+# Start server
 npm start
-
-# Terminal 2: Start Flask server
-python chatbot_backend.py
 ```
 
 Then navigate to http://localhost:3001/chatbot
@@ -184,9 +181,9 @@ IS219-midterm-project/
 
 **Chatbot Files**:
 ```
-├── chatbot_backend.py        # Flask server with OpenAI integration (port 5000)
+├── api/
+│   └── chat.js               # Vercel serverless chatbot endpoint (/api/chat)
 ├── .env                      # OpenAI API key configuration (not in git)
-├── requirements.txt          # Python dependencies
 ├── CHATBOT_SETUP.md         # Detailed chatbot setup instructions
 ├── public/
 │   ├── chatbot.html          # Chatbot UI page

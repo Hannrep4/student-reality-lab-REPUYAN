@@ -1,5 +1,5 @@
 // Configuration
-const FLASK_API_URL = 'http://localhost:5000';
+const CHAT_API_URL = '/api/chat';
 
 // DOM Elements
 const messagesContainer = document.getElementById('messagesContainer');
@@ -10,7 +10,7 @@ const loadingIndicator = document.getElementById('loadingIndicator');
 const errorMessage = document.getElementById('errorMessage');
 
 /**
- * Send message to the Flask chatbot backend
+ * Send message to the chatbot backend
  * @param {Event} event - Form submit event
  */
 async function sendMessage(event) {
@@ -29,14 +29,20 @@ async function sendMessage(event) {
   errorMessage.style.display = 'none';
 
   try {
-    // Send message to Flask backend
-    const response = await fetch(`${FLASK_API_URL}/chat`, {
+    // Send message to backend
+    const response = await fetch(CHAT_API_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ message: message })
     });
+
+    if (!response.ok) {
+      const errorPayload = await response.json().catch(() => ({}));
+      const serverMessage = errorPayload.error || `Request failed with status ${response.status}`;
+      throw new Error(serverMessage);
+    }
 
     const data = await response.json();
 
@@ -49,7 +55,7 @@ async function sendMessage(event) {
       showError('Unexpected response from server');
     }
   } catch (error) {
-    showError(`Connection error: ${error.message}. Make sure the Flask backend is running on port 5000.`);
+    showError(`Connection error: ${error.message}. Please try again in a moment.`);
   } finally {
     // Re-enable send button and hide loading
     sendButton.disabled = false;

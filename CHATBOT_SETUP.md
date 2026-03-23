@@ -7,13 +7,12 @@ This document provides complete instructions for setting up and running the AI-p
 The chatbot feature allows users to interactively discuss rent affordability in New Jersey cities using an AI assistant. The system consists of:
 
 - **Frontend**: HTML/CSS/JavaScript chatbot UI (runs on Express server on port 3001)
-- **Backend**: Python Flask server with OpenAI integration (runs on port 5000)
+- **Backend**: `/api/chat` endpoint (Express locally, Vercel Serverless in production)
 
 ## Prerequisites
 
 1. **Node.js** (already installed for Express)
-2. **Python 3.7+** (with venv already configured)
-3. **OpenAI API Key** (get from https://platform.openai.com/api-keys)
+2. **OpenAI API Key** (get from https://platform.openai.com/api-keys)
 
 ## Installation & Setup
 
@@ -35,39 +34,27 @@ The chatbot feature allows users to interactively discuss rent affordability in 
 
 **Important**: Never commit the `.env` file to version control. Add it to `.gitignore`.
 
-### Step 3: Install Python Dependencies
-
-The Python environment is already configured. Install the required packages:
-
-```bash
-# On Windows, using the configured virtual environment:
-.venv\Scripts\pip install -r requirements.txt
-```
-
-Or manually install via the editor's Python tools.
-
 ## Running the Application
 
-### Option A: Run Both Servers (Recommended)
+### Local Development
 
-You need to run TWO separate servers in different terminals:
+Run one server:
 
-**Terminal 1 - Express Server (Node.js)**:
+**Express Server (Node.js)**:
 ```bash
 npm start
 # Server runs on http://localhost:3001
 ```
 
-**Terminal 2 - Flask Server (Python)**:
-```bash
-# On Windows:
-.venv\Scripts\python chatbot_backend.py
+The chatbot UI sends requests to `/api/chat` on the same origin.
 
-# On Mac/Linux:
-source .venv/bin/activate
-python chatbot_backend.py
-# Server runs on http://localhost:5000
-```
+### Vercel Deployment
+
+1. Open your Vercel project settings
+2. Add environment variable: `OPENAI_API_KEY`
+3. Redeploy
+
+Vercel will run `api/chat.js` as a serverless function.
 
 ### Testing the Setup
 
@@ -135,15 +122,15 @@ IS219-midterm-project/
 
 ## Troubleshooting
 
-### "Connection refused" or "Cannot connect to Flask"
+### "Connection error: Failed to fetch"
 
-**Problem**: The chatbot shows an error about connecting to the Flask backend.
+**Problem**: The chatbot cannot reach the deployed API.
 
 **Solution**:
-1. Make sure the Flask server is running on port 5000
-2. Check that Python is installed and the virtual environment is activated
-3. Verify the Flask server started without errors
-4. Check your firewall isn't blocking port 5000
+1. Confirm the request URL is `/api/chat` in `public/js/chatbot.js`
+2. Confirm `api/chat.js` exists in your deployed branch
+3. Verify `OPENAI_API_KEY` is set in Vercel project environment variables
+4. Redeploy after changing environment variables
 
 ### "OpenAI API error" or "401 Unauthorized"
 
@@ -155,42 +142,32 @@ IS219-midterm-project/
 3. Make sure the API key is valid and not expired
 4. Test the API key directly on https://platform.openai.com/account/api-keys
 
-### Flask "ModuleNotFoundError"
+### "Method not allowed"
 
-**Problem**: Flask or other packages aren't found when running the Python server.
+**Problem**: API route is called with GET instead of POST.
 
 **Solution**:
-1. Ensure the virtual environment is activated
-2. Run `pip install -r requirements.txt` again
-3. Verify Python version is 3.7 or higher: `python --version`
-
-### CORS Errors in Browser Console
-
-**Problem**: JavaScript gets CORS errors when communicating with Flask.
-
-**Solution**: This is already handled by Flask-CORS in the backend. If you still see errors:
-1. Verify the Flask server is running
-2. Check that requests are going to `http://localhost:5000`
-3. Clear browser cache and reload
+1. Ensure chatbot requests use `method: 'POST'`
+2. Confirm payload includes `message`
 
 ## Development Notes
 
 ### OpenAI Model Used
 
-Currently using `gpt-3.5-turbo` for cost-effectiveness. To change the model:
+Currently using `gpt-4o-mini` for cost-effectiveness. To change the model:
 
-1. Open `chatbot_backend.py`
-2. Find the line: `model="gpt-3.5-turbo"`
+1. Open `api/chat.js`
+2. Find the line: `model: 'gpt-4o-mini'`
 3. Change to another model (e.g., `gpt-4`, `gpt-4-turbo-preview`)
 4. Note: Different models have different pricing and capabilities
 
 ### Customizing the Chatbot
 
-The chatbot's behavior is defined by the `SYSTEM_PROMPT` in `chatbot_backend.py`. To customize:
+The chatbot's behavior is defined by the `SYSTEM_PROMPT` in `api/chat.js`. To customize:
 
-1. Edit `SYSTEM_PROMPT` in `chatbot_backend.py`
+1. Edit `SYSTEM_PROMPT` in `api/chat.js`
 2. Change the instructions, tone, or capabilities
-3. Restart the Flask server
+3. Restart local server or redeploy on Vercel
 
 ## Future Enhancements
 
@@ -209,9 +186,9 @@ Potential improvements to the chatbot:
 If you encounter issues:
 
 1. Check the troubleshooting section above
-2. Verify both servers are running
+2. Verify the Node server is running (local) or Vercel deployment is healthy (production)
 3. Check the browser console for errors (F12)
-4. Check the Flask server terminal for error messages
+4. Check Vercel Function logs for `/api/chat`
 5. Ensure your `.env` file is correctly set up
 
 ---
