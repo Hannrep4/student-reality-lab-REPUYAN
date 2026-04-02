@@ -58,60 +58,6 @@ body::before {
   position: sticky;
   top: 0;
   z-index: 100;
-  overflow: hidden;
-}
-
-.navbar::before,
-.navbar::after {
-  content: '';
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  background: rgba(255,255,255,0.1);
-  border-radius: 50%;
-  transform: rotate(45deg);
-}
-
-@keyframes shape-float-slow {
-  0%,
-  100% {
-    transform: translateY(0) rotate(45deg);
-  }
-  50% {
-    transform: translateY(-10px) rotate(49deg);
-  }
-}
-
-@keyframes shape-float-gentle {
-  0%,
-  100% {
-    transform: translateY(0) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-12px) rotate(3deg);
-  }
-}
-
-@keyframes shape-float-tilt {
-  0%,
-  100% {
-    transform: translateY(0) rotate(30deg);
-  }
-  50% {
-    transform: translateY(-8px) rotate(35deg);
-  }
-}
-
-.navbar::before {
-  top: -40px;
-  left: -40px;
-  animation: shape-float-slow 6s ease-in-out infinite;
-}
-
-.navbar::after {
-  bottom: -40px;
-  right: -40px;
-  animation: shape-float-slow 7s ease-in-out infinite 1s;
 } 
 .nav-container {
   max-width: 1200px;
@@ -166,32 +112,7 @@ body::before {
   padding: 6rem 2rem;
   text-align: center;
   margin-bottom: 3rem;
-  overflow: hidden;
 }
-
-/* geometric shapes in hero */
-.hero::before, .hero::after {
-  content: '';
-  position: absolute;
-  border-radius: 50%;
-  opacity: 0.3;
-}
-.hero::before {
-  width: 300px;
-  height: 300px;
-  background: var(--accent-color);
-  top: -100px;
-  left: -100px;
-  animation: shape-float-gentle 8s ease-in-out infinite;
-}
-.hero::after {
-  width: 200px;
-  height: 200px;
-  background: var(--warning-color);
-  bottom: -80px;
-  right: -80px;
-  animation: shape-float-gentle 9s ease-in-out infinite 1.2s;
-} 
 
 .hero-content h1 {
   font-size: 3rem;
@@ -231,41 +152,10 @@ body::before {
   max-width: 1200px;
   margin: 3rem auto;
   padding: 0 2rem;
-  position: relative;
-}
-.features::before {
-  content: '';
-  position: absolute;
-  width: 150px;
-  height: 150px;
-  background: var(--accent-color);
-  opacity: 0.15;
-  top: -30px;
-  right: -30px;
-  transform: rotate(45deg);
-  animation: shape-float-slow 10s ease-in-out infinite;
-}
-.features::after {
-  content: '';
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  background: var(--secondary-color);
-  opacity: 0.15;
-  bottom: -20px;
-  left: -20px;
-  transform: rotate(30deg);
-  animation: shape-float-tilt 11s ease-in-out infinite 0.8s;
 } 
 
 /* Respect reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
-  .navbar::before,
-  .navbar::after,
-  .hero::before,
-  .hero::after,
-  .features::before,
-  .features::after,
   .nav-logo {
     animation: none !important;
   }
